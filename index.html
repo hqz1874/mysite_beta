@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- 设置网页的默认语言为cn -->
+<html lang="cn">
+<head>
+    <!-- 设置字符集 -->
+    <meta charset="UTF-8" />
+    <!-- 网站标题 -->
+    <title>我的网站</title>
+    <!-- 引入首页对应的css -->
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+<body>
+    <div class="AllContainer">
+        <div class="border">
+            <div class="NavArea">
+                <div>主页</div>
+                <div>我的作品</div>
+                <div>游戏世界</div>
+                <div class="ing">生活日常</div>
+                <div>本站信息</div>
+            </div>
+            <div class="ContentArea">
+                <div></div>
+                <div></div>
+                <div></div>
+                 <!-- lifearea -->
+                <div  class="ing">
+
+                </div>
+               
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let navmenuitems = document.querySelectorAll(".NavArea>div")
+        let navmenuconts = document.querySelectorAll(".ContentArea>div")
+
+        for(var i=0 ; i < menuitems.length ;i++){
+            menuitems[i].dataset.index = i
+            menuitems[i].onclick = function(){
+        var index = this.dataset.index
+        for(var m=0 ; m < menuitems.length ; m++){
+            menuitems[m].classList.remove("active")
+            boxes[m].classList.remove("active")
+        }
+        menuitems[index].classList.add("active")
+        boxes[index].classList.add("active")
+        }
+     }
+    </script>
+</body>
+</html>
