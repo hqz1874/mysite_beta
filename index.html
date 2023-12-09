@@ -1,56 +1,66 @@
 <!DOCTYPE html>
-<!-- 设置网页的默认语言为cn -->
-<html lang="cn">
+<html lang="en">
+
 <head>
     <!-- 设置字符集 -->
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 网站标题 -->
-    <title>我的网站</title>
-    <!-- 引入首页对应的css -->
-    <link rel="stylesheet" href="./css/index.css">
+    <title>衡千帆的世界</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <!-- 引入主页样式 -->
+    <link rel="stylesheet" href="/css/index.css">
+    <!-- 在线引入vue3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 在线引入axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
+
 <body>
-    <div class="AllContainer">
-        <div class="border">
-            <div class="NavArea">
-                <div>主页</div>
-                <div>我的作品</div>
-                <div>游戏世界</div>
-                <div class="ing">生活日常</div>
-                <div>本站信息</div>
-            </div>
-            <div class="ContentArea">
-                <div></div>
-                <div></div>
-                <div></div>
-                 <!-- lifearea -->
-                <div  class="ing">
-
-                </div>
-               
-                <div>
-
-                </div>
+    <div class="all" id="app">
+        <div class="main_menu">
+            <div v-for="(item, index) in menu_data" @click="changeIndex(index)">
+                {{item}}
             </div>
         </div>
-    </div>
-    <script>
-        let navmenuitems = document.querySelectorAll(".NavArea>div")
-        let navmenuconts = document.querySelectorAll(".ContentArea>div")
+        <div class="content">
+            <div v-if="now_menu_index == 0" class="inPage_home">
 
-        for(var i=0 ; i < menuitems.length ;i++){
-            menuitems[i].dataset.index = i
-            menuitems[i].onclick = function(){
-        var index = this.dataset.index
-        for(var m=0 ; m < menuitems.length ; m++){
-            menuitems[m].classList.remove("active")
-            boxes[m].classList.remove("active")
-        }
-        menuitems[index].classList.add("active")
-        boxes[index].classList.add("active")
-        }
-     }
-    </script>
+            </div>
+            <div v-if="now_menu_index == 1" class="inPage_home">
+                <iframe src="./pages/study.html" frameborder="0" height="650px" width="1400px"></iframe>
+            </div>
+            <div v-if="now_menu_index == 2">3333</div>
+        </div>
+    </div>
 </body>
+<script>
+    const { createApp, ref } = Vue
+    const app = createApp({
+
+        setup() {
+            // 菜单选项卡
+            const now_menu_index = ref(1)
+            const menu_data = ['主页', '笔记', '33', '44', '55']
+            const changeIndex = (momo) => {
+                now_menu_index.value = momo
+            }
+
+
+            return {
+                // 菜单选项卡
+                now_menu_index,
+                menu_data,
+                changeIndex
+            }
+        }
+
+    })
+
+
+    app.mount("#app")
+</script>
+
 </html>
